@@ -91,7 +91,7 @@ jobs:
         python3 -c "import onnxsim; print(dir(onnxsim))"
         python3 -m pip uninstall -y onnx-simplifier
 
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: python-dist
         path: dist/*.tar.gz
@@ -101,7 +101,7 @@ jobs:
     needs: [build_wheels, build_sdist]
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         # unpacks python-dist artifact into dist/
         # if `name: python-dist` is omitted, the action will create extra parent dir
@@ -172,7 +172,7 @@ jobs:
     - name: Build
       run: ./build_wasm.sh ON
 
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: wasm-with-noderawfs
         path: |
